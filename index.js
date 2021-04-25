@@ -1,7 +1,7 @@
 const ResumeParser = require('simple-resume-parser')
 
 //taking resume
-const resume = new ResumeParser("./files/Resume.docx");
+const resume = new ResumeParser("./tmp/testing.docx");
 
 resume.parseToJSON()
     .then(data => {
@@ -9,4 +9,4 @@ resume.parseToJSON()
     })
     .catch(error => {
         console.log(error);
-    });
+    });    
