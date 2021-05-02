@@ -1,5 +1,4 @@
 const express = require("express");
-const { get } = require("../app");
 const ResumeController = require("../controllers/resumeController");
 const Resume = require("../models/resumeModel");
 const router = express.Router();
