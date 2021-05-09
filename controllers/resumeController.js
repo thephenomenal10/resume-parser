@@ -1,7 +1,7 @@
 const Resume = require("../models/resumeModel");
 const ResumeParser = require("simple-resume-parser");
 const fs = require("fs");
-const path = "./files/testing.docx";
+const path = "./tmp/testing.docx";
 
 const multer = require("multer");
 const { json } = require("body-parser");
@@ -9,7 +9,7 @@ const { json } = require("body-parser");
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "files/");
+    cb(null, "tmp/");
   },
   filename: (req, file, cb) => {
     let ext = file.originalname.substring(
@@ -25,7 +25,7 @@ exports.upload = multer({ storage: storage });
 exports.postResume = async (req, res) => {
   try {
     //to parse the data using Simple-resume-parser module
-    const resume = new ResumeParser("./files/testing.docx");
+    const resume = new ResumeParser("./tmp/testing.docx");
     resume.parseToJSON().then(async (data) => {
       //to store the parsed data and job id into the mongo server
       Resume.create({
